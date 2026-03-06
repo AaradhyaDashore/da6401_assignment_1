@@ -1,0 +1,38 @@
+name: mnist_final_100_sweep
+project: da6401_assignment_1
+method: random 
+metric:
+  name: val_acc
+  goal: maximize
+
+parameters:
+  dataset:
+    value: 'mnist'
+  num_layers:
+    value: 3
+  epochs:
+    values: [5, 10]
+  batch_size:
+    values: [32, 64]
+  learning_rate:
+    values: [0.001, 0.0001]
+  optimizer:
+    values: ['sgd', 'momentum', 'nag', 'rmsprop']
+  weight_decay:
+    values: [0, 0.00005, 0.5]
+  weight_init:
+    values: ['random', 'xavier']
+  activation:
+    values: ['sigmoid', 'tanh', 'relu']
+  loss:
+    values: ['cross_entropy', 'mean_squared_error']
+
+command:
+  - ${env}
+  - python
+  - src/train.py
+  - "--hidden_size"
+  - "128"
+  - "128"
+  - "128"
+  - ${args}
