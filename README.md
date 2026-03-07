@@ -40,9 +40,3 @@ Summarizing the key findings from our investigation:
 * **Vanishing Gradients**: Verified that Sigmoid activations stall in deep networks at low learning rates ($10^{-5}$), while ReLU maintains healthy gradient flow.
 * **Initialization**: Demonstrated that **Zero Initialization** leads to a total failure of symmetry breaking, whereas **Xavier Initialization** ensures immediate convergence.
 * **Fashion-MNIST**: Achieved **~89.5%** accuracy, identifying the increased complexity of texture-based classification compared to digit classification.
-
----
-
-
-## Acknowledgments
-Special thanks to the instructors of **DA6401** at **IIT Madras** for providing the framework to explore these fundamental deep learning concepts.
