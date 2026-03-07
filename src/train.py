@@ -47,7 +47,7 @@ def parse_arguments():
     parser.add_argument('-wd', '--weight_decay', type=float, default=0.0)
     
     # W&B Configuration
-    parser.add_argument('-w_p', '--wandb_project', type=str, default='da6401_assignment_1')
+    parser.add_argument('-w_p', '--wandb_project', type=str, default='da6401_assignment_1_final')
 
     return parser.parse_args()
 
@@ -126,6 +126,25 @@ def main():
     # 6. Final Evaluation on Test Set for Model Selection
     test_loss, test_acc = model.evaluate(X_test, y_test)
     print(f"\nFinal Test Accuracy: {test_acc:.4f}")
+
+    # --- THIS FOR 2.8 ERROR ANALYSIS ---
+    # Get the raw probability outputs for the entire test set
+    # Using the forward pass logic of your custom model
+    model.forward(X_test) 
+    test_probs = model.act_out
+    
+    # Convert one-hot ground truth back to class integers
+    y_true_indices = np.argmax(y_test, axis=1)
+    
+    # Convert model probabilities to class predictions
+    y_pred_indices = np.argmax(test_probs, axis=1)
+
+    # Log the Confusion Matrix to W&B
+    wandb.log({"confusion_matrix" : wandb.plot.confusion_matrix(
+                probs=None,
+                y_true=y_true_indices, 
+                preds=y_pred_indices,
+                class_names=[str(i) for i in range(10)])})
     
     # 7. Save the Best Model for submission 
     best_weights = model.get_weights()

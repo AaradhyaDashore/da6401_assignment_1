@@ -1,1 +1,1 @@
-{"dataset": "mnist", "epochs": 10, "batch_size": 32, "num_layers": 2, "hidden_size": [128, 64], "activation": "relu", "weight_init": "xavier", "optimizer": "rmsprop", "learning_rate": 0.001, "loss": "cross_entropy", "weight_decay": 0.0, "wandb_project": "da6401_assignment_1"}
+{"dataset": "mnist", "epochs": 15, "batch_size": 32, "num_layers": 2, "hidden_size": [128, 64], "activation": "relu", "weight_init": "xavier", "optimizer": "momentum", "learning_rate": 0.01, "loss": "cross_entropy", "weight_decay": 0.0, "wandb_project": "da6401_assignment_1_final"}
