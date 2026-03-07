@@ -148,7 +148,7 @@ def main():
     
     # 7. Save the Best Model for submission 
     best_weights = model.get_weights()
-    np.save("best_model.npy", best_weights)
+    np.save("src/best_model.npy", best_weights)
     
     # Save config as JSON for the autograder
     import json

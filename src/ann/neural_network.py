@@ -29,7 +29,7 @@ class NeuralNetwork:
         self.hidden_size = cli_args.hidden_size
         self.activation = cli_args.activation
         self.weight_init = cli_args.weight_init
-        self.wandb_project = cli_args.wandb_project
+        # self.wandb_project = cli_args.wandb_project
 
         if cli_args.loss == "mean_squared_error":
             self.LossFunction = MeanSquaredError()
